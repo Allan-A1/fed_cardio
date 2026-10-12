@@ -1,0 +1,165 @@
+[
+  {
+    "report_id": "REP-20261005-M0042",
+    "patient_id": "P-0042",
+    "patient_name": "Liam Davis",
+    "age_group": "Child",
+    "modality": "PCG",
+    "prediction": "Abnormal",
+    "confidence": 0.912,
+    "triage_recommendation": "Consult Pediatric Cardiologist \u2014 Acoustic Murmur Localized",
+    "flags": [
+      {
+        "level": "danger",
+        "title": "Structural Acoustic Anomaly Flagged",
+        "message": "Acoustic patterns correspond to systolic/diastolic murmur components (sensitivity threshold triggered)."
+      },
+      {
+        "level": "warning",
+        "title": "Acoustic Murmur High Energy",
+        "message": "Turbulent mitral regurgitant spectral envelope detected in high-frequency band (>200 Hz)."
+      }
+    ],
+    "xai_segments": [
+      {
+        "start_sec": 2.1,
+        "end_sec": 3.4,
+        "intensity": 0.92,
+        "label": "Holosystolic Murmur Peak"
+      },
+      {
+        "start_sec": 5.2,
+        "end_sec": 6.1,
+        "intensity": 0.78,
+        "label": "Systolic Regurgitant Flow"
+      }
+    ],
+    "ef_value": null,
+    "audio_url": "/api/screening/audio/REP-20261005-M0042",
+    "ed_frame_url": null,
+    "es_frame_url": null,
+    "created_at": "2026-10-05T09:30:00Z",
+    "status": "escalated",
+    "escalated_at": "2026-10-05T09:34:00Z",
+    "doctor_notes": "Stat pediatric echocardiography ordered. Mitral regurgitation suspected.",
+    "technician_notes": "Auscultated over apex (MV) in supine position. Prominent blowing murmur with high XAI focus around 2.5s."
+  },
+  {
+    "report_id": "REP-20261004-N0019",
+    "patient_id": "P-0019",
+    "patient_name": "Maya Chen",
+    "age_group": "Child",
+    "modality": "PCG",
+    "prediction": "Normal",
+    "confidence": 0.945,
+    "triage_recommendation": "Routine Observation \u2014 S1/S2 Normal Auscultation",
+    "flags": [
+      {
+        "level": "info",
+        "title": "Clear Physiological Baseline",
+        "message": "Crisp S1 and S2 heart sound transients with silent systolic/diastolic intervals."
+      }
+    ],
+    "xai_segments": [],
+    "ef_value": null,
+    "audio_url": "/api/screening/audio/REP-20261004-N0019",
+    "ed_frame_url": null,
+    "es_frame_url": null,
+    "created_at": "2026-10-04T14:15:00Z",
+    "status": "escalated",
+    "escalated_at": "2026-10-05T14:19:00.239407+00:00",
+    "doctor_notes": "Cardiologist review needed",
+    "technician_notes": "Testing escalation"
+  },
+  {
+    "report_id": "REP-20261003-E0088",
+    "patient_id": "P-0088",
+    "patient_name": "Oliver Taylor",
+    "age_group": "Infant",
+    "modality": "Echo",
+    "prediction": "Abnormal",
+    "confidence": 0.948,
+    "triage_recommendation": "Consult Pediatric Cardiologist \u2014 Reduced LV Ejection Fraction",
+    "flags": [
+      {
+        "level": "danger",
+        "title": "Severely Reduced Ejection Fraction",
+        "message": "Calculated Ejection Fraction is 40.8%, significantly below ASE pediatric normal threshold (>55%)."
+      },
+      {
+        "level": "info",
+        "title": "Pediatric Subject: Infant",
+        "message": "ASE pediatric left ventricular quantification guidelines apply."
+      }
+    ],
+    "xai_segments": [],
+    "ef_value": 40.8,
+    "audio_url": null,
+    "ed_frame_url": "/api/screening/frames/REP-20261003-E0088/ed",
+    "es_frame_url": "/api/screening/frames/REP-20261003-E0088/es",
+    "created_at": "2026-10-03T11:20:00Z",
+    "status": "escalated",
+    "escalated_at": "2026-10-03T11:25:00Z",
+    "doctor_notes": "Cardiology consult requested for infant dilated cardiomyopathy workup.",
+    "technician_notes": "Apical 4-chamber cine loop reveals impaired contractility and decreased LV wall thickening."
+  },
+  {
+    "report_id": "REP-20261002-E0012",
+    "patient_id": "P-0012",
+    "patient_name": "Sophia Martinez",
+    "age_group": "Child",
+    "modality": "Echo",
+    "prediction": "Normal",
+    "confidence": 0.925,
+    "triage_recommendation": "Preserved LV Function \u2014 Routine Follow-Up",
+    "flags": [
+      {
+        "level": "info",
+        "title": "Normal Systolic Contractility",
+        "message": "Ejection Fraction is 62.5%, within healthy pediatric parameters."
+      }
+    ],
+    "xai_segments": [],
+    "ef_value": 62.5,
+    "audio_url": null,
+    "ed_frame_url": "/api/screening/frames/REP-20261002-E0012/ed",
+    "es_frame_url": "/api/screening/frames/REP-20261002-E0012/es",
+    "created_at": "2026-10-02T16:45:00Z",
+    "status": "pending",
+    "escalated_at": null,
+    "doctor_notes": null,
+    "technician_notes": "Routine screening. Excellent acoustic window, normal endocardial displacement."
+  },
+  {
+    "report_id": "REP-20261005-81897C",
+    "patient_id": "P-4411",
+    "patient_name": "Oliver Taylor",
+    "age_group": "Infant",
+    "modality": "ECHO",
+    "prediction": "Abnormal",
+    "confidence": 0.964,
+    "triage_recommendation": "Consult Pediatric Cardiologist \u2014 Reduced LV Ejection Fraction",
+    "flags": [
+      {
+        "level": "info",
+        "title": "Pediatric Subject: Infant",
+        "message": "ASE pediatric left ventricular quantification guidelines apply."
+      },
+      {
+        "level": "danger",
+        "title": "Severely Reduced Ejection Fraction",
+        "message": "Calculated Ejection Fraction is 40.8%, significantly below normal (>55%). Immediate clinical escalation required."
+      }
+    ],
+    "xai_segments": [],
+    "ef_value": 40.8,
+    "audio_url": null,
+    "ed_frame_url": "/api/screening/frames/REP-20261005-81897C/ed",
+    "es_frame_url": "/api/screening/frames/REP-20261005-81897C/es",
+    "created_at": "2026-10-05T14:34:50.396111+00:00",
+    "status": "escalated",
+    "escalated_at": "2026-10-05T14:35:29.439105+00:00",
+    "doctor_notes": "[Priority: Urgent (< 4h)] ",
+    "technician_notes": ""
+  }
+]

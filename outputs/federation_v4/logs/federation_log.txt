@@ -1,0 +1,397 @@
+21:53:03 | ======================================================================
+21:53:03 |   FedProto — Cross-Modal Federated Prototype Learning
+21:53:03 | ======================================================================
+21:53:03 |   Device:          cuda
+21:53:03 |   GPU:             NVIDIA GeForce RTX 4050 Laptop GPU
+21:53:03 |   VRAM:            6.0 GB
+21:53:03 |   Rounds:          30
+21:53:03 |   Local epochs:    5
+21:53:03 |   Warmup epochs:   5
+21:53:03 |   Projection dim:  64
+21:53:03 |   lambda_proto:    0.5
+21:53:03 |   lambda_contrast: 0.15
+21:53:03 |   Temperature:     0.5
+21:53:03 |   Clients:         pcg,ecg,echo
+21:53:03 |   Lambda decay:    0.03 per round
+21:53:03 |   Server weight:   sqrt
+21:53:03 | 
+21:53:03 | [1/35] Initializing 3 clients ...
+21:53:03 | 
+  Creating client: PCG
+21:53:06 |   PCG: 11162 samples
+21:53:06 |   Model params: 355,426
+21:53:06 |   λ_proto=0.500  λ_contrast=0.100  (per-client override)
+21:53:11 | 
+  Creating client: ECG
+21:53:58 |   ECG: 14190 samples
+21:53:58 |   Model params: 1,970,978
+21:53:58 |   λ_proto=0.500  λ_contrast=0.150  (default)
+21:54:00 | 
+  Creating client: ECHO
+21:54:01 |   Echo: 3258 samples
+21:54:01 |   Model params: 421,762
+21:54:01 |   λ_proto=0.300  λ_contrast=0.050  (per-client override)
+21:54:01 | 
+  Solo baselines found: {'pcg': 0.9195995902944545, 'ecg': 0.9461033557663473, 'echo': 0.8280275467775468}
+21:54:01 | 
+----------------------------------------------------------------------
+21:54:01 |   ROUND 0 -- Local Warmup (5 epochs, CE only)
+21:54:01 | ----------------------------------------------------------------------
+21:54:01 | 
+  [PCG] Training 5 warmup epochs ...
+21:54:24 |   [PCG] Warmup done | Val AUROC: 0.9055  Sens: 0.949  Spec: 0.554
+21:54:24 | 
+  [ECG] Training 5 warmup epochs ...
+21:54:58 |   [ECG] Warmup done | Val AUROC: 0.9531  Sens: 0.923  Spec: 0.784
+21:54:58 | 
+  [ECHO] Training 5 warmup epochs ...
+21:55:06 |   [ECHO] Warmup done | Val AUROC: 0.7782  Sens: 0.671  Spec: 0.708
+21:55:06 | 
+  Computing initial prototypes ...
+21:55:08 |   [PCG] Prototypes: class 1: 3897 samples, class 0: 3916 samples
+21:55:11 |   [ECG] Prototypes: class 1: 5018 samples, class 0: 4914 samples
+21:55:11 |   [ECHO] Prototypes: class 1: 1131 samples, class 0: 1149 samples
+21:55:11 | 
+  Global prototypes initialized.
+21:55:11 |   |- Class separation (cosine dist): 0.2779
+  |- Proto shift from last round:    inf
+  |- Aggregation weighting:          sqrt
+  |- class_0 pcg-ecg alignment: cos_dist=1.1119
+  |- class_0 pcg-echo alignment: cos_dist=1.1156
+  |- class_0 ecg-echo alignment: cos_dist=0.7367
+  |- class_1 pcg-ecg alignment: cos_dist=0.9917
+  |- class_1 pcg-echo alignment: cos_dist=0.8979
+  |- class_1 ecg-echo alignment: cos_dist=1.0249
+  |- Converged: not yet
+21:55:11 | 
+----------------------------------------------------------------------
+21:55:11 |   ROUND 1/30  (70s elapsed)
+21:55:11 | ----------------------------------------------------------------------
+21:55:11 |   λ_scale = 0.970
+21:56:54 |   [PCG] AUROC: 0.9194  Sens: 0.875  Spec: 0.760  Loss CE: 0.2598  Proto: 0.0258  Contr: 0.4964
+21:56:54 |   [ECG] AUROC: 0.9468  Sens: 0.941  Spec: 0.710  Loss CE: 0.2218  Proto: 0.0261  Contr: 0.4742
+21:56:54 |   [ECHO] AUROC: 0.8190  Sens: 0.658  Spec: 0.831  Loss CE: 0.4861  Proto: 0.0490  Contr: 0.5902
+21:56:54 | 
+  Alignment Quality:
+21:56:54 |   |- Class separation (cosine dist): 0.1935
+  |- Proto shift from last round:    0.424588
+  |- Aggregation weighting:          sqrt
+  |- class_0 pcg-ecg alignment: cos_dist=0.0001
+  |- class_0 pcg-echo alignment: cos_dist=0.0006
+  |- class_0 ecg-echo alignment: cos_dist=0.0007
+  |- class_1 pcg-ecg alignment: cos_dist=0.0001
+  |- class_1 pcg-echo alignment: cos_dist=0.0605
+  |- class_1 ecg-echo alignment: cos_dist=0.0602
+  |- Converged: not yet
+21:56:54 |   Average Val AUROC (raw): 0.8950
+21:56:54 | 
+----------------------------------------------------------------------
+21:56:54 |   ROUND 2/30  (174s elapsed)
+21:56:54 | ----------------------------------------------------------------------
+21:58:34 |   [PCG] AUROC: 0.9255  Sens: 0.895  Spec: 0.759  Loss CE: 0.1609  Proto: 0.0131  Contr: 0.5176
+21:58:34 |   [ECG] AUROC: 0.9538  Sens: 0.887  Spec: 0.883  Loss CE: 0.1797  Proto: 0.0176  Contr: 0.5122
+21:58:34 |   [ECHO] AUROC: 0.8203  Sens: 0.644  Spec: 0.817  Loss CE: 0.4271  Proto: 0.0301  Contr: 0.5998
+21:58:34 | 
+  Alignment Quality:
+21:58:34 |   |- Class separation (cosine dist): 0.1763
+  |- Proto shift from last round:    0.018302
+  |- Aggregation weighting:          sqrt
+  |- class_0 pcg-ecg alignment: cos_dist=0.0083
+  |- class_0 pcg-echo alignment: cos_dist=0.0002
+  |- class_0 ecg-echo alignment: cos_dist=0.0105
+  |- class_1 pcg-ecg alignment: cos_dist=0.0013
+  |- class_1 pcg-echo alignment: cos_dist=0.0384
+  |- class_1 ecg-echo alignment: cos_dist=0.0257
+  |- Converged: not yet
+21:58:34 |   Average Val AUROC (raw): 0.8999
+21:58:34 | 
+----------------------------------------------------------------------
+21:58:34 |   ROUND 3/30  (273s elapsed)
+21:58:34 | ----------------------------------------------------------------------
+22:00:09 |   [PCG] AUROC: 0.9190  Sens: 0.664  Spec: 0.969  Loss CE: 0.1121  Proto: 0.0097  Contr: 0.5186
+22:00:09 |   [ECG] AUROC: 0.9391  Sens: 0.925  Spec: 0.747  Loss CE: 0.1319  Proto: 0.0139  Contr: 0.5114
+22:00:09 |   [ECHO] AUROC: 0.7970  Sens: 1.000  Spec: 0.063  Loss CE: 0.3921  Proto: 0.0252  Contr: 0.5957
+22:00:09 | 
+  Alignment Quality:
+22:00:09 |   |- Class separation (cosine dist): 0.1898
+  |- Proto shift from last round:    0.051756
+  |- Aggregation weighting:          sqrt
+  |- class_0 pcg-ecg alignment: cos_dist=0.0016
+  |- class_0 pcg-echo alignment: cos_dist=0.1901
+  |- class_0 ecg-echo alignment: cos_dist=0.1616
+  |- class_1 pcg-ecg alignment: cos_dist=0.0013
+  |- class_1 pcg-echo alignment: cos_dist=0.0001
+  |- class_1 ecg-echo alignment: cos_dist=0.0015
+  |- Converged: not yet
+22:00:09 |   Average Val AUROC (raw): 0.8850
+22:00:09 | 
+----------------------------------------------------------------------
+22:00:09 |   ROUND 4/30  (368s elapsed)
+22:00:09 | ----------------------------------------------------------------------
+22:01:43 |   [PCG] AUROC: 0.9207  Sens: 0.684  Spec: 0.966  Loss CE: 0.0659  Proto: 0.0081  Contr: 0.4978
+22:01:44 |   [ECG] AUROC: 0.9378  Sens: 0.926  Spec: 0.738  Loss CE: 0.0906  Proto: 0.0124  Contr: 0.4893
+22:01:44 |   [ECHO] AUROC: 0.8456  Sens: 0.986  Spec: 0.116  Loss CE: 0.3516  Proto: 0.0246  Contr: 0.5788
+22:01:44 | 
+  Alignment Quality:
+22:01:44 |   |- Class separation (cosine dist): 0.2244
+  |- Proto shift from last round:    0.039041
+  |- Aggregation weighting:          sqrt
+  |- class_0 pcg-ecg alignment: cos_dist=0.0008
+  |- class_0 pcg-echo alignment: cos_dist=0.1515
+  |- class_0 ecg-echo alignment: cos_dist=0.1701
+  |- class_1 pcg-ecg alignment: cos_dist=0.0009
+  |- class_1 pcg-echo alignment: cos_dist=0.0002
+  |- class_1 ecg-echo alignment: cos_dist=0.0013
+  |- Converged: not yet
+22:01:44 |   Average Val AUROC (raw): 0.9014
+22:01:44 | 
+----------------------------------------------------------------------
+22:01:44 |   ROUND 5/30  (463s elapsed)
+22:01:44 | ----------------------------------------------------------------------
+22:01:44 |   λ_scale = 0.850
+22:03:21 |   [PCG] AUROC: 0.9224  Sens: 0.860  Spec: 0.821  Loss CE: 0.0522  Proto: 0.0078  Contr: 0.4661
+22:03:22 |   [ECG] AUROC: 0.9372  Sens: 0.940  Spec: 0.706  Loss CE: 0.0659  Proto: 0.0120  Contr: 0.4551
+22:03:22 |   [ECHO] AUROC: 0.8207  Sens: 0.877  Spec: 0.513  Loss CE: 0.3398  Proto: 0.0278  Contr: 0.5572
+22:03:22 | 
+  Alignment Quality:
+22:03:22 |   |- Class separation (cosine dist): 0.2794
+  |- Proto shift from last round:    0.051207
+  |- Aggregation weighting:          sqrt
+  |- class_0 pcg-ecg alignment: cos_dist=0.0039
+  |- class_0 pcg-echo alignment: cos_dist=0.0285
+  |- class_0 ecg-echo alignment: cos_dist=0.0528
+  |- class_1 pcg-ecg alignment: cos_dist=0.0004
+  |- class_1 pcg-echo alignment: cos_dist=0.0037
+  |- class_1 ecg-echo alignment: cos_dist=0.0064
+  |- Converged: not yet
+22:03:22 |   Average Val AUROC (raw): 0.8934
+22:03:22 | 
+----------------------------------------------------------------------
+22:03:22 |   ROUND 6/30  (561s elapsed)
+22:03:22 | ----------------------------------------------------------------------
+22:04:58 |   [PCG] AUROC: 0.9136  Sens: 0.726  Spec: 0.926  Loss CE: 0.0293  Proto: 0.0069  Contr: 0.4196
+22:04:58 |   [ECG] AUROC: 0.9465  Sens: 0.945  Spec: 0.726  Loss CE: 0.0448  Proto: 0.0117  Contr: 0.4093
+22:04:58 |   [ECHO] AUROC: 0.8346  Sens: 0.685  Spec: 0.814  Loss CE: 0.2887  Proto: 0.0303  Contr: 0.5127
+22:04:58 | 
+  Alignment Quality:
+22:04:58 |   |- Class separation (cosine dist): 0.3762
+  |- Proto shift from last round:    0.065826
+  |- Aggregation weighting:          sqrt
+  |- class_0 pcg-ecg alignment: cos_dist=0.0012
+  |- class_0 pcg-echo alignment: cos_dist=0.0109
+  |- class_0 ecg-echo alignment: cos_dist=0.0190
+  |- class_1 pcg-ecg alignment: cos_dist=0.0002
+  |- class_1 pcg-echo alignment: cos_dist=0.0200
+  |- class_1 ecg-echo alignment: cos_dist=0.0235
+  |- Converged: not yet
+22:04:58 |   Average Val AUROC (raw): 0.8983
+22:04:58 | 
+----------------------------------------------------------------------
+22:04:58 |   ROUND 7/30  (657s elapsed)
+22:04:58 | ----------------------------------------------------------------------
+22:06:34 |   [PCG] AUROC: 0.9251  Sens: 0.650  Spec: 0.967  Loss CE: 0.0298  Proto: 0.0083  Contr: 0.3588
+22:06:35 |   [ECG] AUROC: 0.9404  Sens: 0.902  Spec: 0.802  Loss CE: 0.0289  Proto: 0.0112  Contr: 0.3435
+22:06:35 |   [ECHO] AUROC: 0.8168  Sens: 0.438  Spec: 0.959  Loss CE: 0.2708  Proto: 0.0360  Contr: 0.4638
+22:06:35 | 
+  Alignment Quality:
+22:06:35 |   |- Class separation (cosine dist): 0.4519
+  |- Proto shift from last round:    0.060470
+  |- Aggregation weighting:          sqrt
+  |- class_0 pcg-ecg alignment: cos_dist=0.0009
+  |- class_0 pcg-echo alignment: cos_dist=0.0001
+  |- class_0 ecg-echo alignment: cos_dist=0.0016
+  |- class_1 pcg-ecg alignment: cos_dist=0.0003
+  |- class_1 pcg-echo alignment: cos_dist=0.0970
+  |- class_1 ecg-echo alignment: cos_dist=0.1080
+  |- Converged: not yet
+22:06:35 |   Average Val AUROC (raw): 0.8941
+22:06:35 | 
+----------------------------------------------------------------------
+22:06:35 |   ROUND 8/30  (754s elapsed)
+22:06:35 | ----------------------------------------------------------------------
+22:08:12 |   [PCG] AUROC: 0.9114  Sens: 0.655  Spec: 0.967  Loss CE: 0.0367  Proto: 0.0081  Contr: 0.3155
+22:08:13 |   [ECG] AUROC: 0.9434  Sens: 0.938  Spec: 0.722  Loss CE: 0.0246  Proto: 0.0106  Contr: 0.3016
+22:08:13 |   [ECHO] AUROC: 0.8250  Sens: 0.329  Spec: 0.988  Loss CE: 0.2526  Proto: 0.0413  Contr: 0.4238
+22:08:13 | 
+  Alignment Quality:
+22:08:13 |   |- Class separation (cosine dist): 0.4997
+  |- Proto shift from last round:    0.053855
+  |- Aggregation weighting:          sqrt
+  |- class_0 pcg-ecg alignment: cos_dist=0.0009
+  |- class_0 pcg-echo alignment: cos_dist=0.0004
+  |- class_0 ecg-echo alignment: cos_dist=0.0021
+  |- class_1 pcg-ecg alignment: cos_dist=0.0006
+  |- class_1 pcg-echo alignment: cos_dist=0.2135
+  |- class_1 ecg-echo alignment: cos_dist=0.2343
+  |- Converged: not yet
+22:08:13 |   Average Val AUROC (raw): 0.8933
+22:08:13 | 
+----------------------------------------------------------------------
+22:08:13 |   ROUND 9/30  (852s elapsed)
+22:08:13 | ----------------------------------------------------------------------
+22:09:48 |   [PCG] AUROC: 0.9182  Sens: 0.732  Spec: 0.933  Loss CE: 0.0310  Proto: 0.0090  Contr: 0.2945
+22:09:49 |   [ECG] AUROC: 0.9428  Sens: 0.930  Spec: 0.754  Loss CE: 0.0309  Proto: 0.0111  Contr: 0.2818
+22:09:49 |   [ECHO] AUROC: 0.8261  Sens: 0.890  Spec: 0.412  Loss CE: 0.2306  Proto: 0.0399  Contr: 0.3901
+22:09:49 | 
+  Alignment Quality:
+22:09:49 |   |- Class separation (cosine dist): 0.5597
+  |- Proto shift from last round:    0.074647
+  |- Aggregation weighting:          sqrt
+  |- class_0 pcg-ecg alignment: cos_dist=0.0023
+  |- class_0 pcg-echo alignment: cos_dist=0.1510
+  |- class_0 ecg-echo alignment: cos_dist=0.1872
+  |- class_1 pcg-ecg alignment: cos_dist=0.0010
+  |- class_1 pcg-echo alignment: cos_dist=0.0001
+  |- class_1 ecg-echo alignment: cos_dist=0.0009
+  |- Converged: not yet
+22:09:49 |   Average Val AUROC (raw): 0.8957
+22:09:49 | 
+----------------------------------------------------------------------
+22:09:49 |   ROUND 10/30  (948s elapsed)
+22:09:49 | ----------------------------------------------------------------------
+22:09:49 |   λ_scale = 0.700
+22:11:25 |   [PCG] AUROC: 0.9236  Sens: 0.724  Spec: 0.939  Loss CE: 0.0205  Proto: 0.0081  Contr: 0.2654
+22:11:26 |   [ECG] AUROC: 0.9392  Sens: 0.926  Spec: 0.749  Loss CE: 0.0157  Proto: 0.0086  Contr: 0.2487
+22:11:26 |   [ECHO] AUROC: 0.8405  Sens: 0.726  Spec: 0.764  Loss CE: 0.1924  Proto: 0.0362  Contr: 0.3498
+22:11:26 | 
+  Alignment Quality:
+22:11:26 |   |- Class separation (cosine dist): 0.6587
+  |- Proto shift from last round:    0.058547
+  |- Aggregation weighting:          sqrt
+  |- class_0 pcg-ecg alignment: cos_dist=0.0006
+  |- class_0 pcg-echo alignment: cos_dist=0.0174
+  |- class_0 ecg-echo alignment: cos_dist=0.0242
+  |- class_1 pcg-ecg alignment: cos_dist=0.0010
+  |- class_1 pcg-echo alignment: cos_dist=0.0006
+  |- class_1 ecg-echo alignment: cos_dist=0.0008
+  |- Converged: not yet
+22:11:26 |   Average Val AUROC (raw): 0.9011
+22:11:26 | 
+----------------------------------------------------------------------
+22:11:26 |   ROUND 11/30  (1045s elapsed)
+22:11:26 | ----------------------------------------------------------------------
+22:13:02 |   [PCG] AUROC: 0.9166  Sens: 0.823  Spec: 0.854  Loss CE: 0.0180  Proto: 0.0072  Contr: 0.2242
+22:13:03 |   [ECG] AUROC: 0.9384  Sens: 0.927  Spec: 0.724  Loss CE: 0.0247  Proto: 0.0097  Contr: 0.2168
+22:13:03 |   [ECHO] AUROC: 0.8256  Sens: 0.288  Spec: 0.990  Loss CE: 0.1692  Proto: 0.0380  Contr: 0.3068
+22:13:03 | 
+  Alignment Quality:
+22:13:03 |   |- Class separation (cosine dist): 0.6741
+  |- Proto shift from last round:    0.071264
+  |- Aggregation weighting:          sqrt
+  |- class_0 pcg-ecg alignment: cos_dist=0.0034
+  |- class_0 pcg-echo alignment: cos_dist=0.0006
+  |- class_0 ecg-echo alignment: cos_dist=0.0015
+  |- class_1 pcg-ecg alignment: cos_dist=0.0013
+  |- class_1 pcg-echo alignment: cos_dist=0.2660
+  |- class_1 ecg-echo alignment: cos_dist=0.2992
+  |- Converged: not yet
+22:13:03 |   Average Val AUROC (raw): 0.8935
+22:13:03 | 
+----------------------------------------------------------------------
+22:13:03 |   ROUND 12/30  (1142s elapsed)
+22:13:03 | ----------------------------------------------------------------------
+22:14:38 |   [PCG] AUROC: 0.9180  Sens: 0.581  Spec: 0.984  Loss CE: 0.0113  Proto: 0.0055  Contr: 0.2143
+22:14:39 |   [ECG] AUROC: 0.9323  Sens: 0.927  Spec: 0.740  Loss CE: 0.0164  Proto: 0.0083  Contr: 0.2080
+22:14:39 |   [ECHO] AUROC: 0.8299  Sens: 0.836  Spec: 0.614  Loss CE: 0.1541  Proto: 0.0362  Contr: 0.2964
+22:14:39 | 
+  Alignment Quality:
+22:14:39 |   |- Class separation (cosine dist): 0.7418
+  |- Proto shift from last round:    0.058784
+  |- Aggregation weighting:          sqrt
+  |- class_0 pcg-ecg alignment: cos_dist=0.0006
+  |- class_0 pcg-echo alignment: cos_dist=0.0671
+  |- class_0 ecg-echo alignment: cos_dist=0.0793
+  |- class_1 pcg-ecg alignment: cos_dist=0.0008
+  |- class_1 pcg-echo alignment: cos_dist=0.0009
+  |- class_1 ecg-echo alignment: cos_dist=0.0032
+  |- Converged: not yet
+22:14:39 |   Average Val AUROC (raw): 0.8934
+22:14:39 | 
+----------------------------------------------------------------------
+22:14:39 |   ROUND 13/30  (1238s elapsed)
+22:14:39 | ----------------------------------------------------------------------
+22:16:13 |   [PCG] AUROC: 0.9195  Sens: 0.746  Spec: 0.927  Loss CE: 0.0099  Proto: 0.0052  Contr: 0.1918
+22:16:14 |   [ECG] AUROC: 0.9391  Sens: 0.928  Spec: 0.731  Loss CE: 0.0194  Proto: 0.0084  Contr: 0.1882
+22:16:14 |   [ECHO] AUROC: 0.7953  Sens: 0.630  Spec: 0.812  Loss CE: 0.1417  Proto: 0.0340  Contr: 0.2644
+22:16:14 | 
+  Alignment Quality:
+22:16:14 |   |- Class separation (cosine dist): 0.8601
+  |- Proto shift from last round:    0.063062
+  |- Aggregation weighting:          sqrt
+  |- class_0 pcg-ecg alignment: cos_dist=0.0006
+  |- class_0 pcg-echo alignment: cos_dist=0.0023
+  |- class_0 ecg-echo alignment: cos_dist=0.0050
+  |- class_1 pcg-ecg alignment: cos_dist=0.0002
+  |- class_1 pcg-echo alignment: cos_dist=0.0022
+  |- class_1 ecg-echo alignment: cos_dist=0.0035
+  |- Converged: not yet
+22:16:14 |   Average Val AUROC (raw): 0.8846
+22:16:14 | 
+----------------------------------------------------------------------
+22:16:14 |   ROUND 14/30  (1333s elapsed)
+22:16:14 | ----------------------------------------------------------------------
+22:17:47 |   [PCG] AUROC: 0.9252  Sens: 0.769  Spec: 0.929  Loss CE: 0.0089  Proto: 0.0044  Contr: 0.1566
+22:17:47 |   [ECG] AUROC: 0.9380  Sens: 0.936  Spec: 0.708  Loss CE: 0.0156  Proto: 0.0069  Contr: 0.1543
+22:17:48 |   [ECHO] AUROC: 0.8303  Sens: 0.616  Spec: 0.867  Loss CE: 0.1028  Proto: 0.0268  Contr: 0.2097
+22:17:48 | 
+  Alignment Quality:
+22:17:48 |   |- Class separation (cosine dist): 0.9731
+  |- Proto shift from last round:    0.056654
+  |- Aggregation weighting:          sqrt
+  |- class_0 pcg-ecg alignment: cos_dist=0.0015
+  |- class_0 pcg-echo alignment: cos_dist=0.0004
+  |- class_0 ecg-echo alignment: cos_dist=0.0032
+  |- class_1 pcg-ecg alignment: cos_dist=0.0001
+  |- class_1 pcg-echo alignment: cos_dist=0.0004
+  |- class_1 ecg-echo alignment: cos_dist=0.0008
+  |- Converged: not yet
+22:17:48 |   Average Val AUROC (raw): 0.8978
+22:17:48 | 
+  [STOP] Early stopping at round 14 (best smoothed avg AUROC: 0.8975 at round 2)
+22:17:48 | 
+======================================================================
+22:17:48 |   FINAL TEST EVALUATION
+22:17:48 | ======================================================================
+22:17:48 | 
+  == PCG -- Federated Test Results ==
+22:17:48 |   |  AUROC:       0.9160
+22:17:48 |   |  Sensitivity: 0.7949
+22:17:48 |   |  Specificity: 0.8995
+22:17:48 |   |  Accuracy:    0.7743
+22:17:48 |   |  vs Solo:     [-] 0.0036
+22:17:48 |   ============================================
+22:17:50 | 
+  == ECG -- Federated Test Results ==
+22:17:50 |   |  AUROC:       0.9568
+22:17:50 |   |  Sensitivity: 0.8442
+22:17:50 |   |  Specificity: 0.9359
+22:17:50 |   |  Accuracy:    0.8888
+22:17:50 |   |  vs Solo:     [+] 0.0107
+22:17:50 |   ============================================
+22:17:51 | 
+  == ECHO -- Federated Test Results ==
+22:17:51 |   |  AUROC:       0.8305
+22:17:51 |   |  Sensitivity: 0.7703
+22:17:51 |   |  Specificity: 0.7909
+22:17:51 |   |  Accuracy:    0.2612
+22:17:51 |   |  vs Solo:     [+] 0.0025
+22:17:51 |   ============================================
+22:17:51 | 
+  ------------------------------------------------------------
+22:17:51 |   Client     Solo AUROC     Fed AUROC      Delta      Verdict
+22:17:51 |   ------------------------------------------------------------
+22:17:51 |   PCG        0.9196         0.9160         -0.0036    [=] SAME
+22:17:51 |   ECG        0.9461         0.9568         +0.0107    [+] IMPROVED
+22:17:51 |   ECHO       0.8280         0.8305         +0.0025    [=] SAME
+22:17:51 |   ------------------------------------------------------------
+22:17:51 | 
+[Generating visualizations ...]
+22:17:56 |   Computing t-SNE embeddings ...
+22:18:05 | 
+======================================================================
+22:18:05 |   [DONE] FEDERATION COMPLETE
+22:18:05 |   Total time:        1427s (23.8 min)
+22:18:05 |   Best avg AUROC:    0.8975 (round 2)
+22:18:05 |   Converged:         No
+22:18:05 |   Output dir:        outputs/federation_v4
+22:18:05 | ======================================================================

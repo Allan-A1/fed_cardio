@@ -1,0 +1,81 @@
+# ========================
+# Python
+# ========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ========================
+# Virtual Environment
+# ========================
+.venv/
+venv/
+ENV/
+
+# ========================
+# Datasets (too large for GitHub)
+# ========================
+dataset/
+datasets/
+
+# ========================
+# Outputs (checkpoints, results, processed data)
+# ========================
+outputs/checkpoints/
+outputs/processed/
+outputs/federation/
+outputs/results/
+outputs/figures/
+
+# ========================
+# Large / Binary Files
+# ========================
+*.pdf
+*.h5
+*.hdf5
+*.pt
+*.pth
+*.ckpt
+*.pkl
+*.npy
+*.npz
+*.csv
+*.wav
+*.mp3
+*.mp4
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+# ========================
+# Jupyter Notebooks Checkpoints
+# ========================
+.ipynb_checkpoints/
+
+# ========================
+# IDE / Editor
+# ========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ========================
+# OS Files
+# ========================
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# ========================
+# Misc
+# ========================
+.env
+*.log
